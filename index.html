@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript Get Browser Viewport Dimensions</title>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script>
+    function windowSize() {
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        var dataHtml = "<iframe id=\"serviceFrameSend\" src=\"./entity.html\" style=\"height:100%;width:100%\"  frameborder=\"0\"></iframe>";
+        $("#oldContent").html(dataHtml);
+        // alert("Width: " + w + ", " + "Height: " + h);
+    }
+    $(document).ready(function (e) {
+        $("#entity").click(function (e) {
+            var dataHtml = "<iframe id=\"serviceFrameSend\"  src=\"./html/entity.html\" style=\"height:13000px;width:100%\"  frameborder=\"0\"></iframe>";
+            $("#oldContent").html(dataHtml);
+            //alert(1);
+        });
+        $("#netcore").click(function (e) {
+            var dataHtml = "<iframe id=\"serviceFrameSend\" X-Frame-Options='sameorigin' src=\"./html/netcore.html\" style=\"height:10000px;width:100%\"  frameborder=\"0\"></iframe>";
+            $("#oldContent").html(dataHtml);
+            //alert(1);
+        });
+        $("#auth").click(function (e) {
+            var dataHtml = "<iframe id=\"serviceFrameSend\" src=\"./html/auth.html\" style=\"height:3500px;width:100%\"  frameborder=\"0\"></iframe>";
+            $("#oldContent").html(dataHtml);
+            //alert(1);
+        });
+        $("#solid").click(function (e) {
+            var dataHtml = "<iframe id=\"serviceFrameSend\" src=\"./html/solid.html\" style=\"height:8000px;width:100%\"  frameborder=\"0\"></iframe>";
+            $("#oldContent").html(dataHtml);
+            //alert(1);
+        });
+
+        $("#webapi").click(function (e) {
+            var dataHtml = "<iframe id=\"serviceFrameSend\" src=\"./html/webapi.html\" style=\"height:8000px;width:100%\"  frameborder=\"0\"></iframe>";
+            $("#oldContent").html(dataHtml);
+            //alert(1);
+        });
+
+        $("#react").click(function (e) {
+            var dataHtml = "<iframe id=\"serviceFrameSend\" src=\"./html/react.html\" style=\"height:8000px;width:100%\"  frameborder=\"0\"></iframe>";
+            $("#oldContent").html(dataHtml);
+            //alert(1);
+        });
+    });
+
+</script>
+
+<body>
+
+    <nav id="Mydatatabs" class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <!-- <a class="navbar-brand" href="#">FSD Tutorial</a> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a id="" class="nav-link" href="#">Turorial</a>
+                </li>
+                <li class="nav-item">
+                    <a id="netcore" class="nav-link" href="#">.Net Core</a>
+                </li>
+                <li class="nav-item">
+                    <a id="entity" class="nav-link" href="#">Entity Framework</a>
+                </li>
+                <li class="nav-item">
+                    <a id="auth" class="nav-link" href="#">Authentication</a>
+                </li>
+                <li class="nav-item">
+                    <a id="webapi" class="nav-link" href="#">Web API</a>
+                </li>
+                <li class="nav-item">
+                    <a id="auth" class="nav-link" href="#">CRM 365</a>
+                </li>
+                <li class="nav-item">
+                    <a id="solid" class="nav-link" href="#">Solid</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Scripts
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Angular</a>
+                        <div class="dropdown-divider"></div>
+                        <a id="react" class="dropdown-item" href="#">React</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Vue</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">CSS</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">HTML 5</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Azure
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Service Bus</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Functions</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Cosmos DB</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Data Bricks</a>
+                    </div>
+                </li>
+               
+            </ul>
+            
+        </div>
+    </nav>
+
+    <!-- <button type="button" onclick="windowSize();">Get Window Size</button> -->
+
+    <div id="section" class="jumbotron">
+        <div id="oldContent">
+        </div>
+    </div>
+
+</body>
+
+</html>

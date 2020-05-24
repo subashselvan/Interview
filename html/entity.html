@@ -1,0 +1,771 @@
+<style>
+    .firstIndent {
+        text-indent: 25px;
+    }
+
+    .secondIndent {
+        text-indent: 50px;
+        margin-left: 25px;
+    }
+</style>
+<div>
+    <h1 class="display-4">Entity framework</h1>
+
+    <div>
+        <h3>Q1.What is Entity Framework?</h3>
+        <div class="secondIndent">Entity Framework is an open-source ORM framework for .NET applications supported by
+            Microsoft. It enables developers to work with data using objects of domain specific classes without focusing
+            on the underlying database tables and columns where this data is stored.</div><br>
+        <div class="secondIndent">Official Definition: “Entity Framework is an object-relational mapper (O/RM) that
+            enables .NET developers to work with a database using .NET objects. It eliminates the need for most of the
+            data-access code that developers usually need to write.”</div>
+        <hr class="my-4">
+
+        <h3>Q2.Entity Framework Features?</h3>
+        <h4>Cross-platform: </h4>
+        <div class="secondIndent">EF Core is a cross-platform framework which can run on Windows, Linux and Mac.</div>
+        <h4>Modelling:</h4>
+        <div class="secondIndent">EF (Entity Framework) creates an EDM (Entity Data Model) based on POCO (Plain Old CLR
+            Object) entities with get/set properties of different data types. It uses this model when querying or saving
+            entity data to the underlying database.</div>
+        <h4>Querying:</h4>
+        <div class="secondIndent">EF allows us to use LINQ queries (C#/VB.NET) to retrieve data from the underlying
+            database. The database provider will translate this LINQ queries to the database-specific query language
+            (e.g. SQL for a relational database). EF also allows us to execute raw SQL queries directly to the database.
+        </div>
+        <h4>Change Tracking: </h4>
+        <div class="secondIndent">EF keeps track of changes occurred to instances of your entities (Property values)
+            which need to be submitted to the database.</div>
+        <h4>Saving:</h4>
+        <div class="secondIndent">EF executes INSERT, UPDATE, and DELETE commands to the database based on the changes
+            occurred to your entities when you call the SaveChanges() method. EF also provides the asynchronous
+            SaveChangesAsync() method.</div>
+        <h4>Concurrency:</h4>
+        <div class="secondIndent">EF uses Optimistic Concurrency by default to protect overwriting changes made by
+            another user since data was fetched from the database.</div>
+        <h4>Transactions: </h4>
+        <div class="secondIndent">EF performs automatic transaction management while querying or saving data. It also
+            provides options to customize transaction management.</div>
+        <h4>Caching:</h4>
+        <div class="secondIndent">EF includes first level of caching out of the box. So, repeated querying will return
+            data from the cache instead of hitting the database.</div>
+        <h4>Built-in Conventions:</h4>
+        <div class="secondIndent">EF follows conventions over the configuration programming pattern, and includes a set
+            of default rules which automatically configure the EF model.</div>
+        <h4>Configurations:</h4>
+        <div class="secondIndent">EF allows us to configure the EF model by using data annotation attributes or Fluent
+            API to override default conventions.</div>
+        <h4>Migrations: </h4>
+        <div class="secondIndent">EF provides a set of migration commands that can be executed on the NuGet Package
+            Manager Console or the Command Line Interface to create or manage underlying database Schema.</div>
+
+        <hr class="my-4">
+
+        <h4>Q3. What is Entity Framework Latest Versions?</h4>
+        <div class="secondIndent">Currently, there are two latest versions of Entity Framework: EF 6 and EF Core. </div>
+        <hr class="my-4">
+
+
+        <h3>Q4.Explain Entity Framework Architecture?</h3>
+        <img src="./../img/ef-architecture.png" width="500" height="300"
+            style="margin-left: auto; margin-right: auto;display: block;">
+        <div class="firstIndent">
+            <h4>EDM (Entity Data Model):</h4>
+            <div class="secondIndent">EDM consists of three main parts - Conceptual model, Mapping and Storage model.
+            </div>
+            <h4>Conceptual Model:</h4>
+            <div class="secondIndent"> conceptual model contains the model classes and their relationships. This will be
+                independent from your database table design.</div>
+
+            <h4>Storage Model: </h4>
+            <div class="secondIndent">The storage model is the database design model which includes tables, views,
+                stored
+                procedures,
+                and their relationships and keys.</div>
+
+            <h4>Mapping:</h4>
+            <div class="secondIndent">Mapping consists of information about how the conceptual model is mapped to the
+                storage model.</div>
+
+            <h4>LINQ to Entities:</h4>
+            <div class="secondIndent">LINQ-to-Entities (L2E) is a query language used to write queries against the
+                object model.
+                It
+                returns entities, which are defined in the conceptual model. You can use your LINQ skills here.</div>
+
+            <h4>Entity SQL:</h4>
+            <div class="secondIndent">Entity SQL is another query language (For EF 6 only) just like LINQ to Entities.
+                However, it is
+                a
+                little more difficult than L2E and the developer will have to learn it separately.</div>
+
+            <h4>Object Service:</h4>
+            <div class="secondIndent"> Object service is a main entry point for accessing data from the database and
+                returning it
+                back.
+                Object service is responsible for materialization, which is the process of converting data returned from
+                an
+                entity client data provider (next layer) to an entity object structure.</div>
+
+            <h4>Entity Client Data Provider:</h4>
+            <div class="secondIndent">The main responsibility of this layer is to convert LINQ-to-Entities or Entity
+                SQL
+                queries into a SQL query which is understood by the underlying database. It communicates with the
+                ADO.Net
+                data
+                provider which in turn sends or retrieves data from the database.</div>
+
+            <h4>ADO.Net Data Provider:</h4>
+            <div class="secondIndent">This layer communicates with the database using standard ADO.Net.</div>
+        </div>
+        <hr class="my-4">
+
+        <h4>Q5.What is Context Class in Entity Framework?</h4>
+        <div class="secondIndent">The context class is a most important class while working with EF 6 or EF Core. It
+            represent a session with the underlying database using which you can perform CRUD (Create, Read, Update,
+            Delete) operations.The context class in Entity Framework is a class which derives from
+            System.Data.Entity.DbContext. The context class is used to query or save data to the database. It is also
+            used to configure domain classes, database related mappings, change tracking settings, caching, transaction
+            etc.</div>
+        <hr class="my-4">
+
+        <h4>Q6. What is an Entity in Entity Framework?</h4>
+        <div class="secondIndent">An entity in Entity Framework is a class that maps to a database table. EF API maps
+            each entity to a table and each property of an entity to a column in the database.</div>
+        <hr class="my-4">
+
+        <h4>Q7. Entity properties?</h4>
+        <div>An Entity can include two types of properties: Scalar Properties and Navigation Properties.</div>
+        <h4>Scalar Property</h4>
+        <div class="secondIndent">The primitive type properties are called scalar properties. Each scalar property maps
+            to a column in the database table which stores an actual data.</div>
+        <h4>Navigation Property</h4>
+        <div class="secondIndent">
+            The navigation property represents a relationship to another entity.
+
+            There are two types of navigation properties: Reference Navigation and Collection Navigation
+            <h5>Reference Navigation Property</h5>
+            <div class="secondIndent">If an entity includes a property of another entity type, it is called a Reference
+                Navigation Property. It points to a single entity and represents multiplicity of one (1) in the entity
+                relationships.</div>
+            <h5>Collection Navigation Property</h5>
+            <div class="secondIndent">If an entity includes a property of generic collection of an entity type, it is
+                called a collection navigation property. It represents multiplicity of many (*).</div>
+        </div>
+        <hr class="my-4">
+
+        <h4>Q8. What is POCO Entities (Plain Old CLR Object)?</h4>
+        <div class="secondIndent">A POCO entity is a class that doesn't depend on any framework-specific base class. It
+            is like any other normal .NET CLR class, which is why it is called "Plain Old CLR Objects".
+
+            POCO entities are supported in both EF 6 and EF Core.</div>
+        <hr class="my-4">
+
+        <h4>Q9. EntityState in Entity Framework?</h4>
+        <div class="secondIndent">EF API maintains the state of each entity during its lifetime. Each entity has a state
+            based on the operation performed on it via the context class. The entity state represented by an enum
+            System.Data.Entity.EntityState in EF 6 and Microsoft.EntityFrameworkCore.EntityState in EF Core with the
+            following values:
+
+            Added
+            Modified
+            Deleted
+            Unchanged
+            Detached
+            The Context not only holds the reference to all the entity objects as soon as retrieved from the database,
+            but also keeps track of entity states and maintains modifications made to the properties of the entity. This
+            feature is known as Change Tracking.
+
+            The change in entity state from the Unchanged to the Modified state is the only state that's automatically
+            handled by the context. All other changes must be made explicitly using proper methods of DbContext or
+            DbSet. (You will learn about these methods in EF 6 and EF Core sections.)
+
+            EF API builds and executes the INSERT, UPDATE, and DELETE commands based on the state of an entity when the
+            context.SaveChanges() method is called.</div>
+        <hr class="my-4">
+
+        <h4>Q10. Development Approaches with Entity Framework?</h4>
+        <h5>Database-First Approach</h5>
+        <div class="secondIndent">In the database-first development approach, you generate the context and entities for
+            the existing database using EDM wizard integrated in Visual Studio or executing EF commands.</div>
+        <h5>Code-First Approach</h5>
+        <div class="secondIndent">Use this approach when you do not have an existing database for your application. In
+            the code-first approach, you start writing your entities (domain classes) and context class first and then
+            create the database from these classes using migration commands.
+
+            Developers who follow the Domain-Driven Design (DDD) principles, prefer to begin with coding their domain
+            classes first and then generate the database required to persist their data.</div>
+        <h5>Model-First Approach</h5>
+        <div class="secondIndent">In the model-first approach, you create entities, relationships, and inheritance
+            hierarchies directly on the visual designer integrated in Visual Studio and then generate entities, the
+            context class, and the database script from your visual model.</div>
+        <hr class="my-4">
+
+        <h4>Q11. Persistence in Entity Framework?</h4>
+        <div class="secondIndent">There are two scenarios when persisting (saving) an entity to the database using
+            Entity Framework: the Connected Scenario and the Disconnected Scenario.</div>
+
+        <h5>Connected Scenario</h5>
+        <div class="secondIndent">In the connected scenario, the same instance of the context class (derived from
+            DbContext) is used in retrieving and saving entities. It keeps track of all entities during its lifetime.
+            This is useful in windows applications with the local database or the database on the same network.
+            Pros:
+
+            Performs fast.
+            The context keeps track of all entities and automatically sets an appropriate state as and when changes
+            occurr to entities.
+            Cons:
+
+            The context stays alive, so the connection with the database stays open.
+            Utilizes more resources.
+        </div>
+        <h5>Disconnected Scenario</h5>
+        <div class="secondIndent">In the disconnected scenario, different instances of the context are used to retrieve
+            and save entities to the database. An instance of the context is disposed after retrieving data and a new
+            instance is created to save entities to the database.
+
+            The disconnected scenario is complex because an instance of the context doesn't track entities, so you must
+            set an appropriate state to each entity before saving entities using SaveChanges().
+
+            Pros:
+
+            Utilizes less resources compared to the connected scenario.
+            No open connection with the database.
+            Cons:
+
+            Need to set an appropriate state to each entity before saving.
+            Performs slower than the connected scenario.
+
+        </div>
+
+        <hr class="my-4">
+
+        <h4>Q12. Data Annotations Attributes in EF 6 and EF Core?</h4>
+        <div class="secondIndent">Data Annotations attributes are .NET attributes which can be applied on an entity
+            class or properties to override default conventions in EF 6 and EF Core.These data annotation attributes
+            work in the same way in EF 6 and EF Core and are valid in both.</div>
+        <div class="secondIndent">
+            <table class="table table-striped table-bordered table-condensed">
+                <tbody>
+                    <tr>
+                        <th class="col-xs-3">Attribute</th>
+                        <th class="col-xs-9">Description</th>
+                    </tr>
+                    <tr>
+                        <td>Key</td>
+                        <td>Can be applied to a property to specify a key property in an entity and make the
+                            corresponding column a PrimaryKey column in the database.</td>
+                    </tr>
+                    <tr>
+                        <td>Timestamp</td>
+                        <td>Can be applied to a property to specify the data type of a corresponding column in the
+                            database as <code>rowversion</code>.</td>
+                    </tr>
+                    <tr>
+                        <td>ConcurrencyCheck</td>
+                        <td>Can be applied to a property to specify that the corresponding column should be included in
+                            the optimistic concurrency check.</td>
+                    </tr>
+                    <tr>
+                        <td>Required</td>
+                        <td>Can be applied to a property to specify that the corresponding column is a NotNull column in
+                            the database.</td>
+                    </tr>
+                    <tr>
+                        <td>MinLength</td>
+                        <td>Can be applied to a property to specify the minimum string length allowed in the
+                            corresponding column in the database. </td>
+                    </tr>
+                    <tr>
+                        <td>MaxLength</td>
+                        <td>Can be applied to a property to specify the maximum string length allowed in the
+                            corresponding column in the database.</td>
+                    </tr>
+                    <tr>
+                        <td>StringLength</td>
+                        <td>Can be applied to a property to specify the maximum string length allowed in the
+                            corresponding column in the database.</td>
+                    </tr>
+                    <tr>
+                        <td>Table</td>
+                        <td>Can be applied to an entity class to configure the corresponding table name and schema in
+                            the database.</td>
+                    </tr>
+                    <tr>
+                        <td>Column</td>
+                        <td>Can be applied to a property to configure the corresponding column name, order and data type
+                            in the database.</td>
+                    </tr>
+                    <tr>
+                        <td>Index</td>
+                        <td>Can be applied to a property to configure that the corresponding column should have an Index
+                            in the database. (EF 6.1 onwards only)</td>
+                    </tr>
+                    <tr>
+                        <td>ForeignKey</td>
+                        <td>Can be applied to a property to mark it as a foreign key property.</td>
+                    </tr>
+                    <tr>
+                        <td>NotMapped</td>
+                        <td>Can be applied to a property or entity class which should be excluded from the model and
+                            should not generate a corresponding column or table in the database.</td>
+                    </tr>
+                    <tr>
+                        <td>DatabaseGenerated </td>
+                        <td>Can be applied to a property to configure how the underlying database should generate the
+                            value for the corresponding column e.g. identity, computed or none.</td>
+                    </tr>
+                    <tr>
+                        <td>InverseProperty</td>
+                        <td>Can be applied to a property to specify the inverse of a navigation property that represents
+                            the other end of the same relationship. </td>
+                    </tr>
+                    <tr>
+                        <td>ComplexType</td>
+                        <td>Marks the class as complex type in EF 6. EF Core 2.0 does not support this attribute.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr class="my-4">
+
+        <h4>Q13. Fluent API?</h4>
+        <div class="secondIndent">Entity Framework Fluent API is used to configure domain classes to override
+            conventions. EF Fluent API is based on a Fluent API design pattern (a.k.a Fluent Interface) where the result
+            is formulated by method chaining.
+
+            In Entity Framework 6, the DbModelBuilder class acts as a Fluent API using which we can configure many
+            different things. It provides more options of configurations than Data Annotation attributes.
+
+            To write Fluent API configurations, override the OnModelCreating() method of DbContext in a context class,
+            as shown below.</div><br>
+
+        <div style="margin-left: 30px;">public class SchoolContext: DbContext <br>
+            {<br>
+
+            <div style="margin-left: 50px;">
+                public SchoolDBContext(): base() <br>
+                {<br>
+                }<br><br>
+                public DbSet<Student> Students { get; set; }<br>
+                    public DbSet<Standard> Standards { get; set; }<br><br>
+
+                        protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>
+                        {<br>
+                        <div style="margin-left: 60px;">//Write Fluent API configurations here<br><br>
+                            modelBuilder.Entity<Student>().Map(m =><br>
+                                {<br>
+                                <div style="margin-left: 70px;">m.Properties(p => new { p.StudentId,
+                                    p.StudentName});<br>
+                                    m.ToTable("StudentInfo");</div><br>
+                                }).Map(m => {<br>
+                                <div style="margin-left: 70px;">m.Properties(p => new { p.StudentId, p.Height, p.Weight,
+                                    p.Photo, p.DateOfBirth});<br>
+                                    m.ToTable("StudentInfoDetail");</div><br>
+                                });<br><br>
+
+                                modelBuilder.Entity<Standard>().ToTable("StandardInfo");<br>
+                        </div>
+
+                        }<br></div>
+            }
+            <hr class="my-4">
+
+            <h4>Q14. Seed Data in EF 6 Code-First?</h4>
+            <div class="secondIndent">You can insert data into your database tables during the database initialization
+                process. This will be important if you want to provide some test data for your application or some
+                default master data for your application.</div>
+            <hr class="my-4">
+
+            <h4>Q15. Migration in EF 6 Code-First?</h4>
+            <div class="secondIndent">Entity Framework Code-First had different database initialization strategies like
+                CreateDatabaseIfNotExists, DropCreateDatabaseIfModelChanges, and DropCreateDatabaseAlways. However,
+                there are some problems with these strategies, for example if you already have data (other than seed
+                data) or existing Stored Procedures, triggers etc. in your database. These strategies used to drop the
+                entire database and recreate it, so you would lose the data and other DB objects.<br><br>
+
+                Entity Framework introduced a migration tool that automatically updates the database schema when your
+                model changes without losing any existing data or other database objects. It uses a new database
+                initializer called MigrateDatabaseToLatestVersion.<br><br>
+
+                There are two kinds of Migration:<br>
+
+                1. Automated Migration<br>
+                2. Code-based Migration<br></div>
+            <hr class="my-4">
+
+
+            <h4>Q16. Automated Migration in Entity Framework 6?</h4>
+            <div class="secondIndent">Entity Framework introduced automated migration so that you don't have to process
+                database migration manually for each change you make in your domain classes.
+
+                The automated migrations can be implemented by executing the enable-migrations command in the Package
+                Manager Console.<br>
+                Example :enable-migrations –EnableAutomaticMigration:$true
+            </div><br>
+            <div>
+                Once the command runs successfully, it creates an internal sealed Configuration class derived from
+                DbMigrationConfiguration in the Migration folder in your project:<br><br>
+                <img src="./../img/automated-migration2.png" width="700" height="300"
+                    style="margin-left: auto; margin-right: auto;display: block;"><br>
+                As you can see in the constructor of the Configuration class, AutomaticMigrationsEnabled is set to true.
+                The next step is to set the database initializer in the context class to MigrateDatabaseToLatestVersion,
+                as shown below.
+                <br>
+                <div style="margin-left: 30px;">public class SchoolContext: DbContext <br>
+                    {<br>
+                    <div style="margin-left: 40px;"> SchoolDBContext(): base("SchoolDB") <br>
+                        {<br>
+                        <div style="margin-left: 50px;"> Database.SetInitializer(new MigrateDatabaseToLatestVersion
+                            <SchoolDBContext, EF6Console.Migrations.Configuration>());<br></div>
+                        }<br><br>
+
+                        public DbSet<Student> Students { get; set; }<br><br>
+
+                            protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>
+                            {<br>
+                            <div style="margin-left: 50px;">base.OnModelCreating(modelBuilder);</div>
+                            }
+                    </div>
+                    }
+                </div>
+            </div><br>
+            Now, you can add new domain classes and when you run the application again and you will see that the
+            database contains tables for all entities automatically. You don't need to run any command.
+
+            However, this works only if you add new domain classes or remove classes, but it won't work when you add,
+            modify or remove properties in the domain classes. To do this, remove any property from any domain class and
+            run the application. You will get the following Automatic data loss exception.<br><br>
+            This is because you will lose data in the corresponding column of a property. So, to handle this kind of
+            scenario, you have to set AutomaticMigrationDataLossAllowed to true in the Configuration class constructor,
+            along with <b>AutomaticMigrationsEnabled = true;</b>.
+        </div>
+        <hr class="my-4">
+
+
+        <h4>Q17. Code-Based Migration in Entity Framework 6?</h4>
+        <div class="secondIndent">The code-based migration provides more control on the migration and allows you to
+            configure additional things such as setting a default value of a column, configure a computed column etc.
+            <br><br>
+            In order to use code-based migration, you need to execute the following commands in the Package Manager
+            Console in Visual Studio:<br><br>
+
+            1. Enable-Migrations: Enables the migration in your project by creating a Configuration class.<br>
+            2. Add-Migration: Creates a new migration class as per specified name with the Up() and Down() methods.<br>
+            3. Update-Database: Executes the last migration file created by the Add-Migration command and applies
+            changes
+            to the database schema.<br><br>
+            To use code-based migrations, first execute the enable-migrations command in the Package Manager Console.
+            The Enable-Migrations command will create the Configuration class derived from DbMigrationsConfiguration
+            with AutomaticMigrationsEnabled = false.<br><br>
+            Now, you need to set the database initializer MigrateDatabaseToLatestVersion in your context class, as shown
+            below.<br><br></div>
+
+        <div style="margin-left: 30px;">public class SchoolContext: DbContext<br>
+            {<br>
+            <div style="margin-left: 40px;">
+                public SchoolDBContext(): base("SchoolDB")<br>
+                {<br>
+                <div style="margin-left: 50px;">
+                    Database.SetInitializer(new MigrateDatabaseToLatestVersion<SchoolDBContext,
+                        EF6Console.Migrations.Configuration>());</div>
+                }<br><br>
+
+                public DbSet<Student> Students { get; set; }<br><br>
+
+                    protected override void OnModelCreating(DbModelBuilder modelBuilder)<br>
+                    {<br>
+
+                    }
+            </div>
+            }
+        </div>
+        <br>
+
+        Now, you have to create a migration class using the Add-Migration command with the name of your
+        migration class, as shown below.
+        <h5>PM> add-migration SchoolDB-v1</h5><br>
+        <img src="./../img/codebased3.png" width="700" height="300"
+            style="margin-left: auto; margin-right: auto;display: block;"><br><br>
+        <div class="secondIndent">The above command will create a <timestamp>_SchoolDB-v1.cs file with the Up() and
+                Down() methods, as
+                shown below.
+                As you can see, the Up() method contains code for creating database objects and the Down()
+                method contains code for dropping or deleting database objects. You may also write your own
+                custom code for additional configurations. This is the advantage over automated migration.
+
+        </div>
+        <hr class="my-4">
+
+        <h4>Q18. Linq-to-Entities Query?</h4>
+        <div class="secondIndent">The DbSet class is derived from IQuerayable. So, we can use LINQ for querying against
+            DbSet, which will be converted to an SQL query. EF API executes this SQL query to the underlying database,
+            gets the flat result set, converts it into appropriate entity objects and returns it as a query result.
+        </div>
+        Example1<br>
+        <div style="margin-left: 30px;">using (var ctx = new SchoolDBEntities())<br>
+            { <br>
+            <div style="margin-left: 40px;">var student = (from s in ctx.Students</div>
+            <div style="margin-left: 120px;">where s.StudentName == "Bill"</div>
+            <div style="margin-left: 120px;">select s).FirstOrDefault<Student>();</div>
+            }
+        </div><br><br>
+    </div>
+
+    <div>Example2</div>
+    <div style="margin-left: 30px;">using (var ctx = new SchoolDBEntities())<br>
+        { <br>
+        <div style="margin-left: 40px;">var student = ctx.Students</div>
+        <div style="margin-left: 120px;">.Where(s => s.StudentName == "Bill")</div>
+        <div style="margin-left: 120px;">.FirstOrDefault<Student>();</div>
+        }<br>
+    </div>
+    <hr class="my-4">
+
+    <h4>Q19. Eager Loading in Entity Framework?</h4>
+    <div class="secondIndent">Eager loading is the process whereby a query for one type of entity also loads related
+        entities as part of the query, so that we don't need to execute a separate query for related entities. Eager
+        loading is achieved using the Include() method.
+
+        In the following example, it gets all the students from the database along with its standards using the
+        Include() method.</div>
+    <div>Example</div>
+    <div style="margin-left: 30px;">using (var ctx = new SchoolDBEntities())<br>
+        {
+        <div style="margin-left: 40px;">var stud1 = ctx.Students</div>
+        <div style="margin-left: 120px;">.Include("Standard")</div>
+        <div style="margin-left: 120px;">.Where(s => s.StudentName == "Bill")</div>
+        <div style="margin-left: 120px;">.FirstOrDefault<Student>();</div>
+        }
+    </div>
+    <hr class="my-4">
+
+    <h4>Q20. Lazy Loading in Entity Framework?</h4>
+    <div class="secondIndent">Lazy loading is delaying the loading of related data, until you specifically request for
+        it. It is the opposite of eager loading. For example, the Student entity contains the StudentAddress entity. In
+        the lazy loading, the context first loads the Student entity data from the database, then it will load the
+        StudentAddress entity when we access the StudentAddress property as shown below.</div><br>
+    <div style="margin-left: 30px;">using (var ctx = new SchoolDBEntities())<br>
+        {<br>
+        <div style="margin-left: 40px;">//Loading students only<br>
+            IList<Student> studList = ctx.Students.ToList<Student>();<br><br>
+
+                    Student std = studList[0];<br><br>
+
+                    //Loads Student address for particular Student only (seperate SQL query)<br>
+                    StudentAddress add = std.StudentAddress;<br>
+        </div>
+        }
+    </div>
+    <div><br>
+        Rules for lazy loading:<br>
+        1. context.Configuration.ProxyCreationEnabled should be true.<br>
+        2. context.Configuration.LazyLoadingEnabled should be true.<br>
+        3. Navigation property should be defined as public, virtual. Context will NOT do lazy loading if the property is
+        not defined as virtual.
+    </div>
+    <hr class="my-4">
+
+    <h4>Q21. Explicit Loading in Entity Framework?</h4>
+    <div class="secondIndent">Here you will learn how to load related entities in an entity graph explicitly. Explicit
+        loading is valid in EF 6 and EF Core both.
+
+        Even with lazy loading disabled (in EF 6), it is still possible to lazily load related entities, but it must be
+        done with an explicit call. Use the Load() method to load related entities explicitly. Consider the following
+        example.</div><br>
+    <div>Example</div><br>
+    <div style="margin-left: 30px;">using (var context = new SchoolContext())<br>
+        {</div>
+    <div style="margin-left: 50px;">var student = context.Students</div>
+    <div style="margin-left: 120px;">.Where(s => s.FirstName == "Bill")</div>
+    <div style="margin-left: 120px;">.FirstOrDefault<Student>();</div>
+
+    <div style="margin-left: 50px;">context.Entry(student).Reference(s => s.StudentAddress).Load(); // loads
+        StudentAddress<br>
+        context.Entry(student).Collection(s => s.StudentCourses).Load(); // loads Courses collection </div>
+    <div style="margin-left: 30px;">} </div>
+    <hr class="my-4">
+
+    <h4>Q22. Execute Raw SQL Queries in Entity Framework 6?</h4>
+    <div class="secondIndent">Entity Framework allows you to execute raw SQL queries for the underlying relational
+        database.
+
+        The following methods can be used to execute raw SQL queries to the database using Entity Framework 6.x:<br><br>
+
+        1. DbSet.SqlQuery() - The method to write raw SQL queries which return entity instances. The resulted entities
+        will be tracked by the context<br>
+        2. DbContext.Database.SqlQuery() - The Database class represents the underlying database and provides various
+        methods to deal with the database. The Database.SqlQuery() method returns a value of any type.<br>
+        3. DbContext.Database.ExecuteSqlCommand() - The method is useful in executing database commands, such as the
+        Insert, Update and Delete command.</div><br>
+
+    <div>Example</div><br>
+    <div style="margin-left: 30px;">using (var ctx = new SchoolDBEntities())<br>
+        {</div>
+    <div style="margin-left: 50px;"> // DbSet.SqlQuery()<br>var studentList = ctx.Students</div>
+    <div style="margin-left: 120px;">.SqlQuery("Select * from Students")</div>
+    <div style="margin-left: 120px;">.ToList<Student>();</div><br>
+
+    <div style="margin-left: 50px;">//Get student name of string type - DbContext.Database.SqlQuery()<br>
+        string studentName = ctx.Database.SqlQuery<string>("Select studentname from Student where studentid=1")
+            .FirstOrDefault();<br><br>
+            //DbContext.Database.ExecuteSqlCommand()<br>
+            int noOfRowDeleted = ctx.Database.ExecuteSqlCommand("delete from student
+            where studentid=1");</div>
+    <div style="margin-left: 30px;">} </div>
+    <hr class="my-4">
+
+    <h4>Q23. Repositary and Unit of Work Pattern in EF?</h4>
+    <div class="secondIndent">
+        The Repository Pattern, as well as the Unit of Work Pattern, allows to create an abstraction layer between the
+        data access layer and the business logic layer of an application. The purpose of creating this layer is to
+        isolate data access layer so that the changes we may operate cannot affect the business logic layer directly.
+        Implementing these patterns is also helpful for automated unit testing or test-driven development.<br><br>
+        <b>The Repository Pattern</b><br>
+        The Repository Pattern allows us to create an abstraction layer between the data access layer and the business
+        logic layer of an application. So, this Data Access Pattern offers a more loosely coupled approach to data
+        access. So, we are able to create the data access logic in a separate class, called a Repository, which has the
+        responsibility of persisting the application’s business model.<br><br>
+        <b>The Unit of Work Pattern</b><br>
+        The Unit of Work Pattern is a pattern that handles the transactions during data manipulation using the
+        Repository Pattern. Unit of Work is referred to as a single transaction that involves multiple operations.<br>
+    </div><br>
+
+    <img src="./../img/Repository_pattern_diagram.png" width="500" height="550"
+    style="margin-left: auto; margin-right: auto;display: block;">
+
+    <b>IUnitOfWork.cs </b><br><br>
+    using System;<br>
+
+    namespace ContosoUniversity.DAL<br>
+    {<br>
+    <div style="margin-left: 30px;">public interface IUnitOfWork : IDisposable<br>
+        {<br>
+        <div style="margin-left: 50px;">IStudentRepository  { get; }<br>
+            ICategoryRepository Category { get; }<br><br>
+            void Save();</div>
+        }
+    </div>
+    }<br><br>
+
+    <b>UnitOfWork.cs </b><br><br>
+    using System;<br>
+
+    namespace ContosoUniversity.DAL<br>
+    {<br>
+    <div style="margin-left: 30px;">public class UnitOfWork : IUnitOfWork<br>
+        {<br>
+        <div style="margin-left: 50px;">private readonly ApplicationDbContext _db;<br><br>
+            public ICategoryRepository Category { get; private set; }<br>
+        public IStudentRepository Student { get; private set; }<br><br>
+            public UnitOfWork(ApplicationDbContext db)<br>
+            {<br>
+                <div style="margin-left: 50px;">_db = db;<br>
+                Category = new CategoryRepository(_db);<br>
+                Student = new StudentRepository(_db);</div>
+            }<br><br>
+
+            public void Dispose()<br>
+            {<br>
+                <div style="margin-left: 50px;">_db.Dispose();</div>
+            }<br><br>
+
+            public void Save()<br>
+            {<br>
+                <div style="margin-left: 50px;">_db.SaveChanges();</div>
+            }</div>
+        }
+    </div>
+    }<br><br>
+
+    <b>IStudentRepository.cs </b><br><br>
+    using System;<br>
+    using System.Collections.Generic;<br>
+    using ContosoUniversity.Models;<br><br>
+
+    namespace ContosoUniversity.DAL<br>
+    {<br>
+    <div style="margin-left: 30px;">public interface IStudentRepository : IDisposable<br>
+        {<br>
+        <div style="margin-left: 50px;">IEnumerable<Student> GetStudents();<br>
+                Student GetStudentByID(int studentId);<br>
+                void InsertStudent(Student student);<br>
+                void DeleteStudent(int studentID);<br>
+                void UpdateStudent(Student student);</div>
+        }
+    </div>
+    }<br><br>
+
+
+    <b>StudentRepository.cs </b><br><br>
+    using System;<br>
+
+    namespace ContosoUniversity.DAL<br>
+    {<br>
+    <div style="margin-left: 30px;">public class StudentRepository : IStudentRepository<br>
+        {<br>
+        <div style="margin-left: 50px;">private readonly ApplicationDbContext _db;<br><br>
+
+            public StudentRepository(ApplicationDbContext db)<br>
+            {<br>
+                <div style="margin-left: 50px;">_db = db;</div>
+            }<br><br>
+
+            public IEnumerable<Student> GetStudents()<br>
+            {<br>
+                <div style="margin-left: 50px;">return context.Students.ToList();</div>
+            }<br><br>
+
+            public Student GetStudentByID(int id)<br>
+            {<br>
+                <div style="margin-left: 50px;">return context.Students.Find(id);</div>
+            }<br><br>
+            //Todo more function implementation<br>
+        </div>            
+        }
+    </div>
+    }<br><br>
+
+    <b>StudentController.cs </b><br><br>
+    using System;<br>
+
+    namespace ContosoUniversity.Controller<br>
+    {<br>
+    <div style="margin-left: 30px;">public class StudentController : Controller<br>
+        {<br>
+        <div style="margin-left: 50px;">private readonly IUnitOfWork _unitOfWork;<br><br>
+
+            public StudentController(IUnitOfWork unitOfWork)<br>
+            {<br>
+                <div style="margin-left: 50px;">_unitOfWork = unitOfWork;</div>
+            }<br><br>
+
+            public IActionResult Upsert(int? id)<br>
+            {<br>
+                <div style="margin-left: 50px;">Category category = new Category();<br>
+                    if (id == null)<br>
+                    {<br>
+                        <div style="margin-left: 50px;">return View(category);</div>
+                    }<br>
+                    category = _unitOfWork.Student.GetStudentByID(id.GetValueOrDefault());<br>
+                    if (category == null)<br>
+                    {<br>
+                        <div style="margin-left: 50px;">return NotFound();</div>
+                    }<br>
+                    return View(category);</div>
+            }<br><br>
+
+            
+            //Todo more function implementation<br>
+        </div>            
+        }
+    </div>
+    }<br><br>
+
+    <hr class="my-4">
+
+
+
+</div>
+
+</div>

@@ -1,0 +1,167 @@
+<style>
+    .firstIndent {
+        text-indent: 25px;
+    }
+
+    .secondIndent {
+        text-indent: 50px;
+        margin-left: 25px;
+    }
+</style>
+<div>
+
+    <h4>Q1. Authentication vs. Authorization</h4>
+    <div class="secondIndent">Authentication is a process in which a user provides credentials that are then compared to those stored in an operating system, database, app or resource. If they match, users authenticate successfully, and can then perform actions that they're authorized for, during an authorization process. The authorization refers to the process that determines what a user is allowed to do.</div>
+    <hr class="my-4">
+
+    
+    <h4>Q2. Identity on ASP.NET Core</h4>
+    <div class="secondIndent">Identity on ASP.NET Core
+        <ul>
+            <li><a href="#" target="page">Is an API that supports user interface (UI) login functionality.</a></li>
+            <li><a href="#" target="page">Manages users, passwords, profile data, roles, claims, tokens, email confirmation, and more.</a>
+            </li>           
+        </ul>
+        Identity is typically configured using a SQL Server database to store user names, passwords, and profile data. Alternatively, another persistent store can be used, for example, Azure Table Storage. Supported external login providers include Facebook, Google, Microsoft Account, and Twitter.
+    </div>
+    <hr class="my-4">
+
+    <h4>Q3. Background of Authentication and Autorization? </h4>
+    <div class="secondIndent"><a href="https://andrewlock.net/introduction-to-authentication-with-asp-net-core/" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q4. Migrate from ClaimsPrincipal.Current?</h4>
+    <div class="secondIndent">When using ASP.NET Core, the values of both ClaimsPrincipal.Current and Thread.CurrentPrincipal aren't set. These properties both represent static state, which ASP.NET Core generally avoids. Instead, ASP.NET Core's architecture is to retrieve dependencies (like the current user's identity) from context-specific service collections (using its dependency injection (DI) model). What's more, Thread.CurrentPrincipal is thread static, so it may not persist changes in some asynchronous scenarios (and ClaimsPrincipal.Current just calls Thread.CurrentPrincipal by default).<br><br>
+        <a href="https://docs.microsoft.com/en-us/aspnet/core/migration/claimsprincipal-current?view=aspnetcore-3.1" target="page">For More => Read Article</a>
+    </div>
+    <hr class="my-4">
+
+    <h4>Q5. Overview of ASP.NET Core authentication?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authentication/?view=aspnetcore-3.1" target="page">Read More</a></div>
+    <hr class="my-4">
+
+    <h4>Q6. Custom storage providers for ASP.NET Core Identity></h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity-custom-storage-providers?view=aspnetcore-3.1" target="page">Read Article</a></div>
+</div>
+    <hr class="my-4">
+
+    <h4>Q7. Authentication and Authorization: OpenID vs OAuth2 vs SAML?</h4>
+    <div class="secondIndent"><a href="https://spin.atomicobject.com/2016/05/30/openid-oauth-saml/" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q8. Facebook, Google, and external provider authentication in ASP.NET Core?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authentication/social/?view=aspnetcore-3.1&tabs=visual-studio" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q9. Authenticate users with WS-Federation in ASP.NET Core?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authentication/ws-federation?view=aspnetcore-3.1" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q10. Use cookie authentication without ASP.NET Core Identity?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authentication/cookie?view=aspnetcore-3.1" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q11. Social sign-in provider authentication without ASP.NET Core Identity?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authentication/social/social-without-identity?view=aspnetcore-3.1" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q12. Authentication and authorization in Azure App Service and Azure Functions?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/azure/app-service/overview-authentication-authorization?toc=%2Faspnet%2Fcore%2Ftoc.json&bc=%2Faspnet%2Fcore%2Fbreadcrumb%2Ftoc.json&view=aspnetcore-3.1" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q13. What is Azure Active Directory B2C?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/overview" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q14. Configure certificate authentication in ASP.NET Core?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authentication/certauth?view=aspnetcore-3.1" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q15. Multi-factor authentication in ASP.NET Core?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authentication/mfa?view=aspnetcore-3.1" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q16. Simple authorization in ASP.NET Core?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authorization/simple?view=aspnetcore-3.1" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q17. Role-based authorization in ASP.NET Core?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authorization/roles?view=aspnetcore-3.1" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q18. Claims-based authorization in ASP.NET Core?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authorization/claims?view=aspnetcore-3.1" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q19. Policy-based authorization in ASP.NET Core?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authorization/policies?view=aspnetcore-3.1" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q20. Custom Authorization Policy Providers using IAuthorizationPolicyProvider in ASP.NET Core?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authorization/iauthorizationpolicyprovider?view=aspnetcore-3.1" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q21. Resource-based authorization in ASP.NET Core?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authorization/resourcebased?view=aspnetcore-3.1" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q22. Types of User Authentication</h4>
+    <div class="secondIndent">In order for a user to confirm their identity, the individual must provide a piece of information that only the user and the server knows. This information is called an authentication factor, and there are three types:</div>
+    <ul>
+        <li>Knowledge factors: Factors the user must know in order to log in are considered a knowledge factor. This can be anything from a username, password, or pin number. The challenge with these factors is that they can be weak in terms of security because they can be shared or guessed.</li>
+        <li>Possession factors: Anything that the user must have in order to log in is known as a possession factor. One-time password tokens, key fobs, ID cards, and physical tokens are all considered possession factors.</li>
+        <li>Inheritance factors: Using a person’s biological characteristics is known as an inheritance factor. Any biometric authentication process, such as fingerprint scanning and face recognition, would fall into this category.</li>
+    </ul>
+    <hr class="my-4">
+
+    <h4>Q22. View-based authorization in ASP.NET Core MVC?</h4>
+    <div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authorization/views?view=aspnetcore-3.1" target="page">Read Article</a></div>
+    <hr class="my-4">
+
+    <h4>Q23. How Forms authentication is really work?</h4>
+    <div class="firstIndent">
+        assuming that the user's browser has cookies enabled....</div>
+<div style="margin-left: 30px">1. User tries to access restricted page.<br>
+2. Server looks for ASPXAuth cookie in the request but does not find it.<br>
+3. Server redirects user to Login page as configured in web.config.<br>
+4. User enters username and password and posts to the server.<br>
+5. Server authenticates username and password against store. If valid...<br>
+6. Server sets the Forms Authentication Ticket.</div><br>
+<div style="margin-left: 50px">a. The ticket contains (among other things) the userName, IsPersistent and the ExpirationDate.<br>
+b. The ticket is encrypted and signed using keys from the <machineKey> configuration element (either from web.config or from machine.config)<br>
+c. The ticket is stored in a cookie called ASPXAuth, or in the user's URL.</div><br>
+<div style="margin-left: 30px">7. Server redirects user back to the referring URL.<br>
+8. User's browser requests original restricted page again. This time with the ASPXAuth cookie in the request.<br>
+9. Server looks for ASPXAuth cookie and finds it.<br>
+10. Server decrypts Forms Authentication Ticket  found in the cookie.<br>
+11. Server checks expiration on ticket. If this is still valid...<br>
+12. Server now knows that the user is authenticated and knows the UserName. From here authorization can take place (i.e. code can call the database and find out if the user has access to specific features on the page)</div>
+<hr class="my-4">
+
+<h4>Q24. JSON Web Token Tutorial?</h4>
+<div class="secondIndent"><a href="https://www.toptal.com/web/cookie-free-authentication-with-json-web-tokens-an-example-in-laravel-and-angularjs" target="page">Read Article</a></div>
+<div class="secondIndent"><a href="https://andrewlock.net/debugging-jwt-validation-problems-between-an-owin-app-and-identityserver4-2/" target="page">JWT token issues</a></div>
+<div class="secondIndent"><a href="https://jasonwatmore.com/post/2019/10/11/aspnet-core-3-jwt-authentication-tutorial-with-example-api" target="page">JWT token Example</a></div>
+<hr class="my-4">
+
+
+<h4>Q25. What Is and How Does Single Sign-On Authentication Work?</h4>
+<div class="secondIndent"><a href="https://auth0.com/blog/what-is-and-how-does-single-sign-on-work/" target="page">Read Article 1</a></div>
+<div class="secondIndent"><a href="https://swoopnow.com/sso-authentication/" target="page">Read Article 2</a></div>
+<hr class="my-4">
+
+<h4>Q26. What is OAuth? | Learn the Basics of Open Authorization?</h4>
+<div class="secondIndent"><a href="https://swoopnow.com/what-is-oauth/" target="page">Read Article</a></div>
+<hr class="my-4">
+
+<h4>Q27. Token-Based Authentication?</h4>
+<div class="secondIndent"><a href="https://swoopnow.com/token-based-authentication/" target="page">Read Article</a></div>
+<div class="secondIndent"><a href="https://www.moqdigital.com.au/insights/technical/12-steps-to-token-authentication-using-owin" target="page">Example code 1</a></div>
+<div class="secondIndent"><a href="" target="page">Example code 2</a></div>
+<hr class="my-4">
+
+<h4>Q28. Basic Authentication in ASP.NET Web API?</h4>
+<div class="secondIndent"><a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/basic-authentication" target="page">Read Article</a></div>
+<hr class="my-4">
+
+</div>
