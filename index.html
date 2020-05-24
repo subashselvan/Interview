@@ -52,6 +52,21 @@
             $("#oldContent").html(dataHtml);
             //alert(1);
         });
+        $("#jquery").click(function (e) {
+            var dataHtml = "<iframe id=\"serviceFrameSend\" src=\"./html/jquery.html\" style=\"height:8000px;width:100%\"  frameborder=\"0\"></iframe>";
+            $("#oldContent").html(dataHtml);
+            //alert(1);
+        });
+        $("#html").click(function (e) {
+            var dataHtml = "<iframe id=\"serviceFrameSend\" src=\"./html/html.html\" style=\"height:8000px;width:100%\"  frameborder=\"0\"></iframe>";
+            $("#oldContent").html(dataHtml);
+            //alert(1);
+        });
+        $("#javascript").click(function (e) {
+            var dataHtml = "<iframe id=\"serviceFrameSend\" src=\"./html/javascript.html\" style=\"height:8000px;width:100%\"  frameborder=\"0\"></iframe>";
+            $("#oldContent").html(dataHtml);
+            //alert(1);
+        });
     });
 
 </script>
@@ -100,9 +115,11 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Vue</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">CSS</a>
+                        <a id="javascript"class="dropdown-item" href="#">Javascript/ES6</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">HTML 5</a>
+                        <a id="html" class="dropdown-item" href="#">HTML 5/CSS</a>
+                        <div class="dropdown-divider"></div>
+                        <a id="jquery" class="dropdown-item" href="#">JQuery</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
